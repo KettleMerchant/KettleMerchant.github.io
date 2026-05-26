@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 18th Birthday, My Love 🌸</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --rose: #d4607a;
+      --blush: #f9e4ea;
+      --cream: #fdf6f0;
+      --gold: #c9a96e;
+      --dark: #2a1a1f;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── PETALS ── */
+    .petals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+    .petal {
+      position: absolute;
+      top: -40px;
+      width: 14px; height: 18px;
+      background: var(--rose);
+      border-radius: 80% 0 80% 0;
+      opacity: 0.35;
+      animation: fall linear infinite;
+    }
+    .petal:nth-child(odd) { background: #e8a0b0; border-radius: 0 80% 0 80%; }
+    @keyframes fall {
+      0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.4; }
+      100% { transform: translateY(110vh) rotate(360deg) translateX(60px); opacity: 0; }
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      background: radial-gradient(ellipse at 50% 0%, #f7cdd8 0%, var(--cream) 65%);
+    }
+
+    .hero-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: rise 1s 0.3s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 10vw, 6rem);
+      line-height: 1.1;
+      color: var(--dark);
+      opacity: 0;
+      animation: rise 1s 0.6s forwards;
+    }
+
+    .hero-title em {
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 5vw, 2.5rem);
+      font-weight: 400;
+      color: var(--gold);
+      margin-top: 0.5rem;
+      opacity: 0;
+      animation: rise 1s 0.9s forwards;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--rose), transparent);
+      margin: 1.5rem auto;
+      opacity: 0;
+      animation: rise 1s 1.1s forwards;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: #a07080;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      animation: rise 1s 1.3s forwards;
+    }
+
+    /* Music button */
+    .music-btn {
+      margin-top: 2rem;
+      padding: 0.7rem 1.6rem;
+      border: 1.5px solid var(--rose);
+      background: transparent;
+      color: var(--rose);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: all 0.3s;
+      opacity: 0;
+      animation: rise 1s 1.6s forwards;
+    }
+    .music-btn:hover { background: var(--rose); color: white; }
+    .music-btn.playing { background: var(--rose); color: white; }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SCROLL CUE ── */
+    .scroll-cue {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: #c0909a;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .scroll-cue span { font-size: 1.2rem; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 6rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      margin-bottom: 2.5rem;
+      color: var(--dark);
+    }
+
+    /* ── PHOTOS ── */
+    #photos { max-width: 1000px; }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .photo-card {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      border-radius: 4px;
+      background: var(--blush);
+      box-shadow: 0 4px 20px rgba(180,80,100,0.12);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .photo-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 12px 35px rgba(180,80,100,0.2); }
+
+    .photo-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .photo-card:hover img { transform: scale(1.04); }
+
+    /* Placeholder when no image */
+    .photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--rose);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      gap: 0.5rem;
+    }
+    .photo-placeholder .icon { font-size: 2rem; }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1rem;
+      background: linear-gradient(transparent, rgba(42,26,31,0.7));
+      color: white;
+      font-size: 0.82rem;
+      font-style: italic;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .photo-card:hover .photo-caption { transform: translateY(0); }
+
+    /* ── LETTER ── */
+    #letter {
+      text-align: center;
+      max-width: 680px;
+    }
+
+    .letter-box {
+      background: white;
+      border: 1px solid #f0d8de;
+      border-radius: 6px;
+      padding: 3rem 2.5rem;
+      text-align: left;
+      position: relative;
+      box-shadow: 0 8px 40px rgba(180,80,100,0.08);
+    }
+
+    .letter-box::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.5rem;
+      left: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem;
+      color: var(--blush);
+      line-height: 1;
+    }
+
+    .letter-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      line-height: 1.95;
+      color: #4a3040;
+    }
+
+    .letter-text p { margin-bottom: 1.2rem; }
+
+    .letter-sign {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--rose);
+    }
+
+    /* ── REASONS ── */
+    #reasons { text-align: center; }
+
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .reason-card {
+      background: white;
+      border: 1px solid #f0d8de;
+      border-radius: 6px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 2px 12px rgba(180,80,100,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .reason-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(180,80,100,0.13); }
+
+    .reason-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--blush);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .reason-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #5a3545;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 4rem 1.5rem;
+      color: #c0909a;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      background: radial-gradient(ellipse at 50% 100%, #f7cdd8 0%, var(--cream) 65%);
+    }
+
+    footer .heart { font-size: 1.5rem; animation: heartbeat 1.4s infinite; display: block; margin-bottom: 0.8rem; }
+    @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 500px) {
+      .letter-box { padding: 2rem 1.5rem; }
+      section { padding: 4rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- FALLING PETALS -->
+<div class="petals" id="petals"></div>
+
+<!-- BACKGROUND MUSIC -->
+<!-- 🎵 To add music: replace "your-song.mp3" with your audio file path -->
+<audio id="bg-music" loop>
+  <source src="your-song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <p class="hero-tag">A celebration for</p>
+  <h1 class="hero-title">Happy <em>18th</em><br>Birthday</h1>
+  <!-- 💌 CHANGE THIS to her name -->
+  <p class="hero-name">Sophia ✨</p>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">May 26, 2026 &nbsp;·&nbsp; The start of something beautiful</p>
+
+  <button class="music-btn" id="musicToggle" onclick="toggleMusic()">
+    ♫ &nbsp; Play Our Song
+  </button>
+
+  <div class="scroll-cue">
+    scroll <span>↓</span>
+  </div>
+</section>
+
+<!-- ── PHOTOS ── -->
+<section id="photos" style="max-width:1000px">
+  <p class="section-label">Gallery</p>
+  <h2 class="section-title">Us, in pictures 🌸</h2>
+
+  <div class="photo-grid">
+    <!-- 📸 HOW TO ADD PHOTOS:
+         Replace "your-photo-1.jpg" with your image file name.
+         Upload the image to the same folder as this HTML file.
+         Change the caption to your memory. -->
+
+    <div class="photo-card">
+      <img src="your-photo-1.jpg" alt="Memory 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="photo-placeholder" style="display:none"><span class="icon">📷</span>Add Photo 1</div>
+      <div class="photo-caption">Our first date 🌸</div>
+    </div>
+
+    <div class="photo-card">
+      <img src="your-photo-2.jpg" alt="Memory 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="photo-placeholder" style="display:none"><span class="icon">📷</span>Add Photo 2</div>
+      <div class="photo-caption">That rainy afternoon 🌧️</div>
+    </div>
+
+    <div class="photo-card">
+      <img src="your-photo-3.jpg" alt="Memory 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="photo-placeholder" style="display:none"><span class="icon">📷</span>Add Photo 3</div>
+      <div class="photo-caption">You, always laughing ✨</div>
+    </div>
+
+    <div class="photo-card">
+      <img src="your-photo-4.jpg" alt="Memory 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="photo-placeholder" style="display:none"><span class="icon">📷</span>Add Photo 4</div>
+      <div class="photo-caption">My favorite memory 💕</div>
+    </div>
+
+    <div class="photo-card">
+      <img src="your-photo-5.jpg" alt="Memory 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="photo-placeholder" style="display:none"><span class="icon">📷</span>Add Photo 5</div>
+      <div class="photo-caption">Together always 🌼</div>
+    </div>
+
+    <div class="photo-card">
+      <img src="your-photo-6.jpg" alt="Memory 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="photo-placeholder" style="display:none"><span class="icon">📷</span>Add Photo 6</div>
+      <div class="photo-caption">Us forever 💖</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOVE LETTER ── -->
+<section id="letter" style="max-width:680px">
+  <p class="section-label">A Letter For You</p>
+  <h2 class="section-title">From my heart ❤️</h2>
+
+  <div class="letter-box">
+    <!-- 💌 EDIT THIS LETTER with your own words! -->
+    <div class="letter-text">
+      <p>My love,</p>
+      <p>
+        Today you turn 18 — and I want you to know that every single day 
+        with you has been one I wouldn't trade for anything in this world.
+        You are the kind of person who makes ordinary moments feel like 
+        something out of a dream.
+      </p>
+      <p>
+        I remember the first time I saw you — I didn't know yet how much 
+        you would mean to me. Now I can't imagine a day without your laugh, 
+        your voice, your presence.
+      </p>
+      <p>
+        You are turning 18, but to me you've always had a soul far older 
+        and wiser. You are thoughtful, kind, beautiful in every sense of 
+        the word — and I am so lucky to be the person who gets to love you.
+      </p>
+      <p>
+        Happy birthday, my love. Here's to your 18th year, and to all the 
+        ones we'll share together. 🌸
+      </p>
+    </div>
+    <!-- 💌 CHANGE THIS to your name -->
+    <p class="letter-sign">— forever yours, [Your Name]</p>
+  </div>
+</section>
+
+<!-- ── REASONS ── -->
+<section id="reasons">
+  <p class="section-label">Because</p>
+  <h2 class="section-title">18 reasons I love you 💛</h2>
+
+  <div class="reasons-grid">
+    <!-- ✏️ EDIT each reason with something real and specific to her! -->
+    <div class="reason-card"><div class="reason-num">01</div><div class="reason-text">Your laugh that fills up the whole room</div></div>
+    <div class="reason-card"><div class="reason-num">02</div><div class="reason-text">How caring you are to everyone around you</div></div>
+    <div class="reason-card"><div class="reason-num">03</div><div class="reason-text">The way your eyes light up when you're excited</div></div>
+    <div class="reason-card"><div class="reason-num">04</div><div class="reason-text">You always know what to say</div></div>
+    <div class="reason-card"><div class="reason-num">05</div><div class="reason-text">Your strength, even when things are hard</div></div>
+    <div class="reason-card"><div class="reason-num">06</div><div class="reason-text">How you make me feel like everything is okay</div></div>
+    <div class="reason-card"><div class="reason-num">07</div><div class="reason-text">Your kindness to strangers</div></div>
+    <div class="reason-card"><div class="reason-num">08</div><div class="reason-text">The little things you notice that no one else does</div></div>
+    <div class="reason-card"><div class="reason-num">09</div><div class="reason-text">How you love deeply and without condition</div></div>
+    <div class="reason-card"><div class="reason-num">10</div><div class="reason-text">Your beautiful, beautiful smile</div></div>
+    <div class="reason-card"><div class="reason-num">11</div><div class="reason-text">Your passion for the things you love</div></div>
+    <div class="reason-card"><div class="reason-num">12</div><div class="reason-text">How you always believe in me</div></div>
+    <div class="reason-card"><div class="reason-num">13</div><div class="reason-text">Late night conversations that go on forever</div></div>
+    <div class="reason-card"><div class="reason-num">14</div><div class="reason-text">The way you make ordinary days feel special</div></div>
+    <div class="reason-card"><div class="reason-num">15</div><div class="reason-text">Your dreams — they're so big and so beautiful</div></div>
+    <div class="reason-card"><div class="reason-num">16</div><div class="reason-text">How you always try your best</div></div>
+    <div class="reason-card"><div class="reason-num">17</div><div class="reason-text">The way I feel when I'm with you</div></div>
+    <div class="reason-card"><div class="reason-num">18</div><div class="reason-text">Simply — that you exist in my world 🌸</div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="heart">💗</span>
+  Happy 18th Birthday, my love &nbsp;·&nbsp; Made with love, just for you
+</footer>
+
+<script>
+  /* ── PETALS ── */
+  const petalContainer = document.getElementById('petals');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (6 + Math.random() * 8) + 's';
+    p.style.animationDelay = (Math.random() * 8) + 's';
+    p.style.width = (10 + Math.random() * 10) + 'px';
+    p.style.height = (12 + Math.random() * 12) + 'px';
+    p.style.opacity = 0.2 + Math.random() * 0.3;
+    petalContainer.appendChild(p);
+  }
+
+  /* ── MUSIC ── */
+  const audio = document.getElementById('bg-music');
+  const btn   = document.getElementById('musicToggle');
+  let playing = false;
+
+  function toggleMusic() {
+    if (!playing) {
+      audio.play().then(() => {
+        playing = true;
+        btn.textContent = '♫  Pause Music';
+        btn.classList.add('playing');
+      }).catch(() => {
+        btn.textContent = '♫  No audio file found';
+      });
+    } else {
+      audio.pause();
+      playing = false;
+      btn.textContent = '♫  Play Our Song';
+      btn.classList.remove('playing');
+    }
+  }
+</script>
+
+</body>
+</html>
